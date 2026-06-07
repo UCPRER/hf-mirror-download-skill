@@ -1,20 +1,20 @@
 # HF Mirror Download Skill
 
-[中文](README.zh-CN.md)
+[English](README.md)
 
-Codex skill for downloading Hugging Face models, datasets, and spaces through `hf-mirror.com` with resumable `wget` downloads.
+这是一个用于 Codex 的技能，可通过 `hf-mirror.com` 下载 Hugging Face 模型、数据集和 Spaces，并使用可续传的 `wget` 下载。
 
-By default, downloads go into the Hugging Face cache layout so `from_pretrained("repo_id", local_files_only=True)` can find them.
+默认情况下，文件会下载到 Hugging Face 缓存布局中，因此 `from_pretrained("repo_id", local_files_only=True)` 可以找到它们。
 
-## Install
+## 安装
 
-This repo follows the Agent Skills layout:
+本仓库遵循 Agent Skills 布局：
 
 ```text
 skills/hf-mirror-download/SKILL.md
 ```
 
-Install for Codex:
+为 Codex 安装：
 
 ```bash
 npx skills add UCPRER/hf-mirror-download-skill \
@@ -22,7 +22,7 @@ npx skills add UCPRER/hf-mirror-download-skill \
   --skill hf-mirror-download
 ```
 
-Install globally:
+全局安装：
 
 ```bash
 npx skills add UCPRER/hf-mirror-download-skill \
@@ -31,13 +31,13 @@ npx skills add UCPRER/hf-mirror-download-skill \
   --global
 ```
 
-List available skills before installing:
+安装前列出可用技能：
 
 ```bash
 npx skills add UCPRER/hf-mirror-download-skill --list
 ```
 
-Install from the full GitHub URL:
+使用完整的 GitHub URL 安装：
 
 ```bash
 npx skills add https://github.com/UCPRER/hf-mirror-download-skill \
@@ -45,39 +45,39 @@ npx skills add https://github.com/UCPRER/hf-mirror-download-skill \
   --skill hf-mirror-download
 ```
 
-## Script Usage
+## 脚本用法
 
-Run directly from the skill directory:
+在技能目录中直接运行：
 
 ```bash
 cd skills/hf-mirror-download
 bash scripts/hf_mirror_download.sh google/flan-t5-base
 ```
 
-Common options:
+常用选项：
 
 ```bash
-# Save to a normal directory instead of HF cache
+# 保存到普通目录，而不是 HF 缓存
 bash scripts/hf_mirror_download.sh google/flan-t5-base --local-dir ./flan-t5-base
 
-# Download selected files only
+# 仅下载选中的文件
 bash scripts/hf_mirror_download.sh Qwen/Qwen2.5-0.5B \
   --include '*.json' \
   --include '*.safetensors'
 
-# Use a proxy
+# 使用代理
 bash scripts/hf_mirror_download.sh google/flan-t5-base --proxy http://127.0.0.1:9890
 
-# Preview selected files
+# 预览将要下载的文件
 bash scripts/hf_mirror_download.sh google/flan-t5-base --dry-run
 ```
 
-Useful environment switches:
+实用的环境变量开关：
 
 ```bash
-WGET_PROGRESS=0  # hide progress bars
-WGET_VERBOSE=1   # show verbose wget logs
-HF_TOKEN=...     # token for gated/private repos
+WGET_PROGRESS=0  # 隐藏进度条
+WGET_VERBOSE=1   # 显示详细 wget 日志
+HF_TOKEN=...     # 用于 gated/private 仓库的 token
 ```
 
-Interrupted downloads can be resumed by rerunning the same command.
+下载中断后，重新运行相同命令即可继续。
